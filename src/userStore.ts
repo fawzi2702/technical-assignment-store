@@ -1,6 +1,10 @@
-import { Restrict, Store } from "./store";
+import { IStore, Restrict, Store } from "./store";
 
-export class UserStore extends Store {
+interface IUserStore extends IStore<IUserStore> {
+  name: string;
+}
+
+export class UserStore extends Store<IUserStore> {
   @Restrict("rw")
   name: string = "John Doe";
 
